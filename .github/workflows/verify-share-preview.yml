@@ -16,6 +16,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Regression check for the TGR V12 WhatsApp preview.
           grep -F '<title>TREINANDO TGR V12 | Treinamento Comercial</title>' index.html
           grep -F '<meta property="og:title" content="TREINANDO TGR V12">' index.html
           grep -F '<meta property="og:description" content="Treinamento Comercial TGR">' index.html
