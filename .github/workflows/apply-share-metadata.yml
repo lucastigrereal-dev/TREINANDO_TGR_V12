@@ -22,17 +22,19 @@ jobs:
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
           old = '    <title>Your Vacation | Treinamento</title>'
-          new = '''    <title>TREINANDO TGR V12 | Treinamento Comercial</title>
-    <meta name="description" content="Treinamento Comercial TGR">
-    <meta property="og:title" content="TREINANDO TGR V12">
-    <meta property="og:description" content="Treinamento Comercial TGR">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lucastigrereal-dev.github.io/TREINANDO_TGR_V12/">'''
+          replacement = '\n'.join([
+              '    <title>TREINANDO TGR V12 | Treinamento Comercial</title>',
+              '    <meta name="description" content="Treinamento Comercial TGR">',
+              '    <meta property="og:title" content="TREINANDO TGR V12">',
+              '    <meta property="og:description" content="Treinamento Comercial TGR">',
+              '    <meta property="og:type" content="website">',
+              '    <meta property="og:url" content="https://lucastigrereal-dev.github.io/TREINANDO_TGR_V12/">',
+          ])
           if s.count(old) != 1:
               raise SystemExit(f'Expected exactly one old title, found {s.count(old)}')
           if 'property="og:title"' in s:
               raise SystemExit('og:title already exists; refusing duplicate metadata')
-          p.write_text(s.replace(old, new, 1), encoding='utf-8')
+          p.write_text(s.replace(old, replacement, 1), encoding='utf-8')
           PY
           grep -F '<title>TREINANDO TGR V12 | Treinamento Comercial</title>' index.html
           grep -F '<meta property="og:title" content="TREINANDO TGR V12">' index.html
