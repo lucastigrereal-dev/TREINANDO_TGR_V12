@@ -1,0 +1,22 @@
+name: Verify share preview
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-share-meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify WhatsApp share metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F '<title>TREINANDO TGR V12 | Treinamento Comercial</title>' index.html
+          grep -F '<meta property="og:title" content="TREINANDO TGR V12">' index.html
+          grep -F '<meta property="og:description" content="Treinamento Comercial TGR">' index.html
+          grep -F '<meta property="og:url" content="https://lucastigrereal-dev.github.io/TREINANDO_TGR_V12/">' index.html
