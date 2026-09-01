@@ -1,3 +1,2 @@
-# TREINANDO-COM-YOUR
-
-Repositório do standalone de treinamento Your Vacation.
+TREINANDO_TGR_V12
+Repositório do standalone de treinamento TGR
